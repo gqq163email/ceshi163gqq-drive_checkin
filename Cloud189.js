@@ -208,21 +208,21 @@ const main = async () => {
         const { familyCapacityInfo } = await cloudClient.getUserSizeInfo();
 
         logger.log(
-          `${firstSpace}实际：个人容量+ ${
+          `${firstSpace}实际：个人+ ${
             (cloudCapacityInfo2.totalSize - cloudCapacityInfo0.totalSize) /
             1024 /
             1024
-          }M, 家庭容量+ ${
+          }M, 家庭+ ${
             (familyCapacityInfo.totalSize - familyCapacitySize2) / 1024 / 1024
           }M`
         );
         logger.log(
-          `${firstSpace}个人总容量：${(
+          `${firstSpace}个人：${(
             cloudCapacityInfo2.totalSize /
             1024 /
             1024 /
             1024
-          ).toFixed(2)}G, 家庭总容量：${(
+          ).toFixed(2)}G, 家庭：${(
             familyCapacityInfo2.totalSize /
             1024 /
             1024 /
@@ -241,11 +241,6 @@ const main = async () => {
     const capacityChange = familyCapacitySize2 - familyCapacitySize;
     logger.log(
       `主账号${userNameInfo} 家庭+ ${capacityChange / 1024 / 1024}M`
-    );
-     cloudClient.setCookieMap(CookiesMap.get(firstUserName))
-    let { cloudCapacityInfo: cloudCapacityInfo2, familyCapacityInfo: familyCapacityInfo2 } = await cloudClient.getUserSizeInfo();
-    logger.log(
-      `主账号个人：${(cloudCapacityInfo2.totalSize / 1024 / 1024 / 1024).toFixed(2)}G, 家庭：${(familyCapacityInfo2.totalSize / 1024 / 1024 / 1024).toFixed(2)}G`
     );
     logger.log("");
   }
