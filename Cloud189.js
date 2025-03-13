@@ -240,7 +240,12 @@ const main = async () => {
     userNameInfo = mask(firstUserName, 3, 7);
     const capacityChange = familyCapacitySize2 - familyCapacitySize;
     logger.log(
-      `主账号${userNameInfo} 家庭容量+ ${capacityChange / 1024 / 1024}M`
+      `主账号${userNameInfo} 家庭+ ${capacityChange / 1024 / 1024}M`
+    );
+     cloudClient.setCookieMap(CookiesMap.get(firstUserName))
+    let { cloudCapacityInfo: cloudCapacityInfo2, familyCapacityInfo: familyCapacityInfo2 } = await cloudClient.getUserSizeInfo();
+    logger.log(
+      `主账号个人：${(cloudCapacityInfo2.totalSize / 1024 / 1024 / 1024).toFixed(2)}G, 家庭：${(familyCapacityInfo2.totalSize / 1024 / 1024 / 1024).toFixed(2)}G`
     );
     logger.log("");
   }
@@ -257,7 +262,7 @@ const main = async () => {
     logger.log("\n\n");
     const events = recording.replay();
     const content = events.map((e) => `${e.data.join("")}`).join("  \n");
-    push("天翼云盘自动签到任务", content);
+    push("2350-1天翼自动签到git", content);
     recording.erase();
   }
 })();
