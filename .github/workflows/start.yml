@@ -9,7 +9,7 @@ on:
         default: "false"
         type: boolean
   schedule:
-    - cron: '10 20 * * *'
+    - cron: '50 19 * * *'
 
 jobs:
   build:
@@ -57,4 +57,4 @@ jobs:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
           retain_days: 0
-          keep_minimum_runs: 5
+          keep_minimum_runs: 10
